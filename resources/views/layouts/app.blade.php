@@ -1,43 +1,48 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <title>
-        Snack APP
-    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <title>
+        Admin - @yield('title')
+    </title>
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}" />
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}" />
-
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css ') }}" />
-    <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css ') }}" />
-    <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css ') }}" />
-    <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css ') }}" />
-    <link rel="stylesheet" href="{{ asset('css/main.css ') }}" />
+    <link rel="stylesheet" href={{ asset("css/vendor/bootstrap-tagsinput.css") }} />
+    <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+    <style>
+        .custom-file-input {
+            cursor: pointer;
+        }
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        .custom-file-input:lang(fr)~.custom-file-label::after {
+            content: "Charger";
+        }
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer>
-    </script>
+        button>* {
+            pointer-events: none;
+        }
+    </style>
+    @stack("styles")
 </head>
 
-<body>
+<body id="app-container" class="menu-default show-spinner">
     <nav class="navbar fixed-top">
         <div class="d-flex align-items-center navbar-left">
             <a href="#" class="menu-button d-none d-md-block">
-                <svg class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17">
+                <svg class="main" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 9 17">
                     <rect x="0.48" y="0.5" width="7" height="1" />
                     <rect x="0.48" y="7.5" width="7" height="1" />
                     <rect x="0.48" y="15.5" width="7" height="1" />
                 </svg>
-                <svg class="sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17">
+                <svg class="sub" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 18 17">
                     <rect x="1.56" y="0.5" width="16" height="1" />
                     <rect x="1.56" y="7.5" width="16" height="1" />
                     <rect x="1.56" y="15.5" width="16" height="1" />
@@ -45,24 +50,13 @@
             </a>
 
             <a href="#" class="menu-button-mobile d-xs-block d-sm-block d-md-none">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 17">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 26 17">
                     <rect x="0.5" y="0.5" width="25" height="1" />
                     <rect x="0.5" y="7.5" width="25" height="1" />
                     <rect x="0.5" y="15.5" width="25" height="1" />
                 </svg>
             </a>
-
-            <div class="search" data-search-path="Pages.Search.html?q=">
-                <input placeholder="Search...">
-                <span class="search-icon">
-                    <i class="simple-icon-magnifier"></i>
-                </span>
-            </div>
-
-            <a class="btn btn-sm btn-outline-primary ml-3 d-none d-md-inline-block"
-                href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a>
         </div>
-
 
         <a class="navbar-logo" href="Dashboard.Default.html">
             <span class="logo d-none d-xs-block"></span>
@@ -79,106 +73,6 @@
                     </div>
                 </div>
 
-                <div class="position-relative d-none d-sm-inline-block">
-                    <button class="header-icon btn btn-empty" type="button" id="iconMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="simple-icon-grid"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right mt-3  position-absolute" id="iconMenuDropdown">
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-equalizer d-block"></i>
-                            <span>Settings</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-male-female d-block"></i>
-                            <span>Users</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-puzzle d-block"></i>
-                            <span>Components</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-bar-chart-4 d-block"></i>
-                            <span>Profits</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-file d-block"></i>
-                            <span>Surveys</span>
-                        </a>
-
-                        <a href="#" class="icon-menu-item">
-                            <i class="iconsminds-suitcase d-block"></i>
-                            <span>Tasks</span>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="position-relative d-inline-block">
-                    <button class="header-icon btn btn-empty" type="button" id="notificationButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="simple-icon-bell"></i>
-                        <span class="count">3</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
-                        <div class="scroll">
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/profiles/l-2.jpg" alt="Notification Image"
-                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                                </a>
-                                <div class="pl-3">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">Joisse Kaycee just sent a new comment!</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/notifications/1.jpg" alt="Notification Image"
-                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                                </a>
-                                <div class="pl-3">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">1 item is out of stock!</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/notifications/2.jpg" alt="Notification Image"
-                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                                </a>
-                                <div class="pl-3">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">New order received! It is total $147,20.</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row mb-3 pb-3 ">
-                                <a href="#">
-                                    <img src="img/notifications/3.jpg" alt="Notification Image"
-                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
-                                </a>
-                                <div class="pl-3">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">3 items just added to wish list by a user!
-                                        </p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton">
                     <i class="simple-icon-size-fullscreen"></i>
                     <i class="simple-icon-size-actual"></i>
@@ -189,22 +83,133 @@
             <div class="user d-inline-block">
                 <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="name">Sarah Kortney</span>
+                    <span class="name">
+                        Nom-Prénom Admin
+                    </span>
                     <span>
-                        <img alt="Profile Picture" src="img/profiles/l-1.jpg" />
+                        <img alt="Profile Picture" src="{{ asset('img/profiles/l-2.jpg') }}" />
                     </span>
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right mt-3">
-                    <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">Features</a>
-                    <a class="dropdown-item" href="#">History</a>
-                    <a class="dropdown-item" href="#">Support</a>
-                    <a class="dropdown-item" href="#">Sign out</a>
+                    <a class="dropdown-item" href="#">
+                        Paramétres
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Support
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="dropdown-item">
+                            Se déconnecter
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </nav>
+
+    <div class="menu">
+        <div class="main-menu">
+            <div class="scroll">
+                <ul class="list-unstyled">
+                    <li class="active">
+                        <a href="{{ route('adminHome') }}" data-access="direct-link">
+                            <i class="iconsminds-shop-4"></i>
+                            <span>
+                                Gestion
+                                <br>
+                                des plats
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="iconsminds-digital-drawing"></i>
+                            TEST
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="iconsminds-air-balloon-1"></i>
+                            <span>
+                                TEST
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="iconsminds-pantone"></i>
+                            TEST
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#menu">
+                            <i class="iconsminds-three-arrow-fork"></i>
+                            TEST
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Blank.Page.html">
+                            <i class="iconsminds-bucket"></i>
+                            TEST
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container-fluid">
+            @section('bread-cumbs')
+            @show
+
+            @section('page_content')
+            @show
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <p class="mb-0 text-muted">
+                            <a href="">
+                                Algolus
+                            </a>
+                            2021-2022
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('input[type=file]').change(function () {
+            if (this.id == $(this).next().attr('for'))
+                $(this).next().html(
+                    $(this).val().split(/(\\|\/)/g).pop()
+                );
+        });
+    </script>
+    @include('scripts')
+    @section('scripts')
+    @show
+
 </body>
 
 </html>
