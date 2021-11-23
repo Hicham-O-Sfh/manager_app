@@ -6,34 +6,38 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+/**
+ * @property integer $id
+ * @property string $nom
+ * @property string $prenom
+ * @property boolean $is_admin
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class User extends Authenticatable
 {
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * The "type" of the auto-incrementing ID.
+     * 
+     * @var string
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $keyType = 'integer';
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $fillable = ['nom', 'prenom', 'is_admin', 'email', 'password', 'remember_token', 'created_at', 'updated_at'];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * Indicates if the model should be timestamped.
+     * 
+     * @var bool
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public $timestamps = false;
 }
