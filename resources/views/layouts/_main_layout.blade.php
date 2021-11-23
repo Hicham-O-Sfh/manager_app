@@ -78,8 +78,10 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <a href="{{ url('/home') }}">
-                Accueil
+            <a href="{{ route('accueil_client') }}">
+                aller au
+                <br>
+                Dashboard
             </a>
             @else
             <a href="#login_modal" data-toggle="modal" data-target="#login_modal">
@@ -87,10 +89,11 @@
             </a>
 
             @if (Route::has('register'))
-            <a href="{{ route('register') }}">
+            <a href="#register_modal" data-toggle="modal" data-target="#register_modal">
                 S'inscrire
             </a>
             @include('auth._login')
+            @include('auth._register')
             @endif
             @endauth
         </div>

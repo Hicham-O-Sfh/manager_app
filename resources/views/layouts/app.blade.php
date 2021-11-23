@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>
-        Admin - @yield('title')
+        Dashboard - @yield('title')
     </title>
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}" />
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}" />
@@ -84,7 +84,7 @@
                 <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="name">
-                        Nom-Prénom Admin
+                        Nom-Prénom User
                     </span>
                     <span>
                         <img alt="Profile Picture" src="{{ asset('img/profiles/l-2.jpg') }}" />
@@ -114,7 +114,7 @@
             <div class="scroll">
                 <ul class="list-unstyled">
                     <li class="active">
-                        <a href="{{ route('adminHome') }}" data-access="direct-link">
+                        <a href="{{ route('accueil_admin') }}" data-access="direct-link">
                             <i class="iconsminds-shop-4"></i>
                             <span>
                                 Gestion
@@ -124,9 +124,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('accueil') }}">
                             <i class="iconsminds-digital-drawing"></i>
-                            TEST
+                            Accueil
                         </a>
                     </li>
                     <li>

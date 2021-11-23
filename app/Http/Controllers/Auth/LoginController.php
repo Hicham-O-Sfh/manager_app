@@ -49,11 +49,8 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->is_admin) {
-                return redirect()->route('adminHome');
-            } else {
-                return redirect()->route('home');
-            }
+            return auth()->user()->is_admin ?
+                redirect()->route('accueil_admin') : redirect()->route('accueil_client');
         } else {
             return redirect()->route('login')
                 ->with('error', 'Email-Address And Password Are Wrong.');
