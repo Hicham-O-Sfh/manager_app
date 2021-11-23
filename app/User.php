@@ -32,7 +32,7 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'is_admin', 'email', 'password', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['nom', 'prenom', 'is_admin', 'email', 'password', 'remember_token'];
 
     /**
      * Indicates if the model should be timestamped.
