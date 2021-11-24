@@ -59,10 +59,9 @@
                                                         <i class="glyph-icon simple-icon-trash"></i>
                                                     </button>
                                                 </form>
-                                                <button class="btn btn-sm btn-primary" data-toggle="modal"
-                                                    data-target="#modifier_plat">
-                                                    <i class="glyph-icon iconsminds-pen" data-toggle="tooltip"
-                                                        title="Modifier"></i>
+                                                <button class="btn btn-sm btn-primary mt-1" data-toggle="modal"
+                                                    data-target="#modifier_plat-{{ $plat->id }}" title="Modifier">
+                                                    <i class="glyph-icon iconsminds-pen"></i>
                                                 </button>
                                             </td>
                                             <td>

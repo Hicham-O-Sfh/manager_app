@@ -17,7 +17,7 @@ class CreatePlatsTable extends Migration
             $table->id();
             $table->string("chemin_photo")->nullable();
             $table->string("libelle");
-            $table->string("description");
+            $table->string("description", 1000);
             $table->string("ingredients");
             $table->date("date_ajout");
             $table->foreignId('categorie_id')->constrained();

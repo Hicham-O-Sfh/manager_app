@@ -114,14 +114,18 @@
             <div class="scroll">
                 <ul class="list-unstyled">
                     <li class="active">
-                        <a href="{{ route('accueil_admin') }}" data-access="direct-link">
-                            <i class="iconsminds-shop-4"></i>
-                            <span>
-                                Gestion
-                                <br>
-                                des plats
-                            </span>
-                        </a>
+                        @if (Auth::user()->is_admin)
+                            <a href="{{ route('accueil_admin') }}" data-access="direct-link">
+                        @else
+                            <a href="{{ route('accueil_client') }}" data-access="direct-link">
+                        @endif
+                        <i class="iconsminds-shop-4"></i>
+                        <span>
+                            Gestion
+                            <br>
+                            des plats
+                        </span>
+                    </a>
                     </li>
                     <li>
                         <a href="{{ route('accueil') }}">
