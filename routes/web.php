@@ -18,3 +18,7 @@ Auth::routes();
 Route::get('/Dashboard', 'HomeController@index')->name('accueil_client');
 Route::get('/Dashboard-Admin', 'HomeController@admin_home')->name('accueil_admin')->middleware('is_admin');
 Route::get('/', 'AccueilController@accueil')->name("accueil");
+
+Route::post('/Ajout-Plat', 'HomeController@ajout_plat')->name('ajout_plat')->middleware('is_admin');
+Route::post('/Supprimer-Plat-{plat}', 'HomeController@supprimer_plat')->name('supprimer_plat')->middleware('is_admin');
+Route::post('/Modifier-Plat-{plat}', 'HomeController@modifier_plat')->name('modifier_plat')->middleware('is_admin');

@@ -25,6 +25,13 @@ class Categorie extends Model
     protected $fillable = ['libelle', 'description'];
 
     /**
+     * Indicates if the model should be timestamped.
+     * 
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function plats()

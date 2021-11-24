@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property integer $id
  * @property integer $categorie_id
+ * @property string $chemin_photo
  * @property string $libelle
  * @property string $description
- * @property string $ingrédients
+ * @property string $ingredients
  * @property string $date_ajout
- * @property Category $category
+ * @property Categorie $categorie
  */
 class Plat extends Model
 {
@@ -25,13 +26,20 @@ class Plat extends Model
     /**
      * @var array
      */
-    protected $fillable = ['categorie_id', 'libelle', 'description', 'ingrédients', 'date_ajout'];
+    protected $fillable = ['categorie_id', 'chemin_photo', 'libelle', 'description', 'ingredients', 'date_ajout'];
+
+    /**
+     * Indicates if the model should be timestamped.
+     * 
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function categorie()
     {
-        return $this->belongsTo('App\Category', 'categorie_id');
+        return $this->belongsTo('App\Categorie', 'categorie_id');
     }
 }

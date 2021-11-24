@@ -15,9 +15,10 @@ class CreatePlatsTable extends Migration
     {
         Schema::create('plats', function (Blueprint $table) {
             $table->id();
+            $table->string("chemin_photo")->nullable();
             $table->string("libelle");
             $table->string("description");
-            $table->string("ingrédients");
+            $table->string("ingredients");
             $table->date("date_ajout");
             $table->foreignId('categorie_id')->constrained();
         });
